@@ -1,0 +1,187 @@
+/*
+
+PART 1:
+
+You've been ordered to improve your company's newsletter form. 
+You can design it however you want, but the manager wants the button to
+animate both on the :hover and the :active state.
+
+1. Redesign the page (e.g. colors, positions, sizing, spacing)
+2. Improve the button's hover effect
+3. Improve thee button's click effect
+
+SKILLS:
+color, background, margin, padding, border-radius, 
+CSS pseudo selectors (:active, :hover), transform
+*/
+
+:root {
+  --dark-goldenrod: #ac8d0bff;
+  --msu-green: #14453dff;
+  --dark-sienna: #3d0c11ff;
+
+  --primaryColor: hsla(48, 88%, 36%, 0.2);
+  --secondaryColor: var(--msu-green);
+}
+
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+form {
+  padding: 1rem;
+  margin-top: 2rem;
+  position: relative;
+  
+  /* borrowed from momentum desktop app, productivity app */
+  background-image: url("https://images.unsplash.com/photo-1503197979108-c824168d51a8?ixlib=rb-0.3.5&q=99&fm=jpg&crop=entropy&cs=tinysrgb&w=2048&fit=max&s=d869a223ff92cd214c7a207e61b827eb?momo_cache_bg_uuid=7cb9b947-aa76-4b26-8e51-06f69bcd5868");
+  
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  max-width: 600px;
+}
+
+h3 {
+  font-size: calc(.8rem + 6vw);
+  color: var(--secondaryColor);
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+button {
+  min-width: 165px;
+  width: 100%;
+  height: 50px;
+  letter-spacing: 0.5px;
+  line-height: 50px;
+  padding: 0 35px 0 35px;
+  font-size:  calc(0.6rem + 1vw);
+  background-color: var(--secondaryColor);
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.form-group {
+  position: relative;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.form-input {
+  border-bottom: 1px solid var(--secondaryColor);
+  margin: 25px 0;
+  padding: .1rem .5rem;
+}
+
+.form-group .form-input {
+    background: none;
+    background-color: white;
+    color: grey;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid grey;
+    margin: 25px 0;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+/* adapted from zero-to-hero react/graphql course by https://zerotomastery.io/ */
+.form-input-label.clamp-label,
+.form-input:focus ~ .form-input-label {
+  top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--secondaryColor);
+}
+
+.form-input-label {
+  color: var(--secondaryColor);
+  font-size: 1rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 20px;
+  top: 50px;
+  transition: 300ms ease all;
+}
+
+/*
+.clamp-label,
+.form-input-label.pop-out {
+  top: 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+}
+*/
+
+/* adapted from w3schools.com How-to Snack/Toast */
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: var(--secondaryColor);
+  color: white;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 40%;
+  bottom: 30px;
+  font-size: 1rem;
+}
+
+.toast.show {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
